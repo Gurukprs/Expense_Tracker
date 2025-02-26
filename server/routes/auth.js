@@ -43,6 +43,27 @@ router.post('/register', async (req, res) => {
   }
 });
 
+// router.post('/login', async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+//     const user = await User.findOne({ email });
+
+//     if (!user) return res.status(400).json({ message: 'User not found' });
+
+//     const isMatch = await bcrypt.compare(password, user.password);
+//     if (!isMatch) return res.status(400).json({ message: 'Invalid password' });
+
+//     // Check if Admin
+//     const isAdmin = user.email === ADMIN_EMAIL;
+
+//     const token = jwt.sign({ userId: user._id, isAdmin }, JWT_SECRET, { expiresIn: '1h' });
+
+//     res.json({ token, isAdmin });
+//   } catch (error) {
+//     console.error('Login Error:', error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// });
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -58,11 +79,13 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign({ userId: user._id, isAdmin }, JWT_SECRET, { expiresIn: '1h' });
 
-    res.json({ token, isAdmin });
+    // ✅ Include user's name in response
+    res.json({ token, isAdmin, name: user.name, email: user.email });
   } catch (error) {
     console.error('Login Error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 module.exports = router;

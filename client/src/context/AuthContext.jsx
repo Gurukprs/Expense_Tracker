@@ -17,12 +17,33 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Login function
+  // const login = async ({ email, password }) => {
+  //   try {
+  //     const response = await axios.post('http://localhost:5000/auth/login', { email, password });
+  
+  //     const userData = {
+  //       name: response.data.name, // ✅ Ensure name is received from backend
+  //       email: response.data.email,
+  //       isAdmin: response.data.isAdmin,
+  //       token: response.data.token,
+  //     };
+  
+  //     setUser(userData);
+  //     localStorage.setItem('user', JSON.stringify(userData));
+  
+  //     console.log("✅ User logged in:", userData); // ✅ Debugging
+  //     navigate(response.data.isAdmin ? '/admin' : '/dashboard');
+  //   } catch (error) {
+  //     console.error('Login failed:', error.response?.data?.message || error.message);
+  //     alert('Invalid credentials, please try again.');
+  //   }
+  // };
   const login = async ({ email, password }) => {
     try {
       const response = await axios.post('http://localhost:5000/auth/login', { email, password });
   
       const userData = {
-        name: response.data.name, // ✅ Ensure name is received from backend
+        name: response.data.name, // ✅ Ensure name is received
         email: response.data.email,
         isAdmin: response.data.isAdmin,
         token: response.data.token,
@@ -31,14 +52,14 @@ export const AuthProvider = ({ children }) => {
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData));
   
-      console.log("✅ User logged in:", userData); // ✅ Debugging
+      console.log("✅ User logged in:", userData); // Debugging
       navigate(response.data.isAdmin ? '/admin' : '/dashboard');
     } catch (error) {
       console.error('Login failed:', error.response?.data?.message || error.message);
       alert('Invalid credentials, please try again.');
     }
   };
-    
+  
 
   // Logout function
   const logout = () => {

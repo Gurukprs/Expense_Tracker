@@ -79,6 +79,42 @@ router.put('/:id/update', async (req, res) => {
   }
 });
 
+// router.post("/:id/expense", async (req, res) => {
+//   try {
+//     console.log("🚀 Expense request received:", req.body); // ✅ Debugging
+
+//     const { user, item, amount, criteria } = req.body;
+
+//     if (!user || !item || !amount || !criteria) {
+//       console.log("🚨 Missing fields:", { user, item, amount, criteria });
+//       return res.status(400).json({ message: "All fields are required" });
+//     }
+
+//     console.log("✅ Storing expense for user:", user); // ✅ Confirm correct user before storing
+
+//     const event = await Event.findById(req.params.id);
+//     if (!event) return res.status(404).json({ message: "Event not found" });
+
+//     if (!event.expenses) event.expenses = [];
+
+//     event.expenses.push({ 
+//       user,  
+//       item, 
+//       amount: parseFloat(amount), 
+//       criteria, 
+//       date: new Date(),
+//     });
+
+//     await event.save();
+//     console.log("✅ Expense added successfully:", event.expenses);
+
+//     res.json({ message: "Expense added successfully", event });
+//   } catch (error) {
+//     console.error("❌ Error adding expense:", error);
+//     res.status(500).json({ message: "Server error", error: error.message });
+//   }
+// });
+
 router.post("/:id/expense", async (req, res) => {
   try {
     console.log("🚀 Expense request received:", req.body); // ✅ Debugging
@@ -90,7 +126,7 @@ router.post("/:id/expense", async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    console.log("✅ Storing expense for user:", user); // ✅ Confirm correct user before storing
+    console.log("✅ Storing expense for user:", user); // ✅ Confirm before storing
 
     const event = await Event.findById(req.params.id);
     if (!event) return res.status(404).json({ message: "Event not found" });

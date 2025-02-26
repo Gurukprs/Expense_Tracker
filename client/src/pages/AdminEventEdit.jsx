@@ -142,16 +142,16 @@ const AdminEventEdit = () => {
           </tbody>
         </table>
 
-      <h3>Total Expenses</h3>
-      <ul>
-        {event.criteria.map((c) => (
-          <li key={c.name}>
-            {c.name}: ${c.totalSpent} spent / ${c.maxBudget} allocated - Remaining: ${c.maxBudget - c.totalSpent}
-          </li>
-        ))}
-      </ul>
+        <h3>Total Expenses</h3>
+        <ul>
+          {updatedCriteria.map((c) => (
+            <li key={c.name}>
+              {c.name}: ${c.totalSpent || 0} spent / ${c.maxBudget} allocated - Remaining: ${c.maxBudget - (c.totalSpent || 0)}
+            </li>
+          ))}
+        </ul>
 
-      <h3>Net Total Spent: ${event.criteria.reduce((sum, c) => sum + c.totalSpent, 0)}</h3>
+        <h3>Net Total Spent: ${updatedCriteria.reduce((sum, c) => sum + (c.totalSpent || 0), 0)}</h3>
     </div>
   );
 };
