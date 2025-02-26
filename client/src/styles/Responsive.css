@@ -1,0 +1,44 @@
+/* Mobile-friendly adjustments */
+@media screen and (max-width: 768px) {
+    body {
+      display: block;
+      padding: 20px;
+    }
+  
+    .auth-form {
+      width: 100%;
+      max-width: 350px;
+    }
+  
+    .dashboard {
+      width: 100%;
+    }
+  
+    .event-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .event-card {
+      width: 100%;
+      max-width: 300px;
+    }
+  
+    .event-details {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    .event-details input {
+      width: 100%;
+      margin: 5px 0;
+    }
+  }
+  
+  /* Tablets */
+  @media screen and (max-width: 1024px) {
+    .event-card {
+      width: 45%;
+    }
+  }
+  
