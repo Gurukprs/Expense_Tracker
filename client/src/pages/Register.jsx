@@ -1,26 +1,76 @@
-import React, { useState, useContext } from 'react';
-import AuthContext from '../context/AuthContext';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { register } = useContext(AuthContext);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    register({ name, email, password });
+  const sendOtp = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message);
+
+      alert("OTP sent to your email.");
+      setOtpSent(true);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const verifyOtp = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/auth/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, otp }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message);
+
+      alert("Registration successful! Please log in.");
+      navigate("/");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
-    <div className="auth-form">
+    <div>
       <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Register</button>
-      </form>
+      {!otpSent ? (
+        <>
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          />
+          <button onClick={sendOtp}>Send OTP</button>
+        </>
+      ) : (
+        <>
+          <input type="text" placeholder="Enter OTP" onChange={(e) => setOtp(e.target.value)} />
+          <button onClick={verifyOtp}>Verify & Register</button>
+        </>
+      )}
     </div>
   );
 };
