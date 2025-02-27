@@ -129,8 +129,7 @@ This project is **open-source**. Feel free to contribute!
 ---
 
 ## 🙌 Contributors
-🔹 **Your Name** - Project Lead 👨‍💻  
-🔹 **Team Members** - CSE Association 24-25 🎓
+🔹 **Guruprasaath S**
 
 ---
 
