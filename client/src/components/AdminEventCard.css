@@ -1,0 +1,71 @@
+/* AdminEventCard.css */
+
+/* Event Card Container */
+.event-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  margin-bottom: 20px; /* Space between cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.dark-theme .event-card {
+  background-color: #444;
+  border-color: #666;
+  color: #f1f1f1;
+}
+
+.event-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.dark-theme .event-card h3 {
+  color: #f1f1f1;
+}
+
+.event-card p {
+  font-size: 16px;
+  color: #555;
+}
+
+.dark-theme .event-card p {
+  color: #bbb;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dark-theme .event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .event-card {
+    padding: 15px;
+    width: 90%; /* Make card width responsive */
+  }
+
+  .event-card h3 {
+    font-size: 18px;
+  }
+
+  .event-card p {
+    font-size: 14px;
+  }
+}

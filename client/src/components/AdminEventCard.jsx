@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './AdminEventCard.css'; // Import your CSS file for styling
 
 const AdminEventCard = ({ event }) => {
   const navigate = useNavigate();
