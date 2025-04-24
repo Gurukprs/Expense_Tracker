@@ -1,0 +1,66 @@
+/* AdminNavbar.css */
+
+/* Global Styles */
+.admin-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: 'transparent'; 
+  transition: background-color 0.3s ease;
+}
+
+.dark-theme .admin-navbar {
+  background-color: 'transparent';
+  /* border-bottom: 2px solid #444; */
+}
+
+.admin-navbar h2 {
+  font-size: 24px;
+  font-weight: bold;
+
+  margin: 0;
+}
+
+.dark-theme .admin-navbar h2 {
+  color: #f1f1f1;
+}
+
+.admin-navbar button {
+  background-color: #4CAF50;
+  color: 'transparent';
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 15px;
+}
+
+.admin-navbar button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.dark-theme .admin-navbar button {
+  background-color: #007BFF;
+}
+
+.dark-theme .admin-navbar button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .admin-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-navbar button {
+    margin: 10px 0;
+    width: 100%;
+    padding: 12px;
+  }
+}
