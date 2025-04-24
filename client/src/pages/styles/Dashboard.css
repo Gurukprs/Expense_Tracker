@@ -1,0 +1,31 @@
+.dashboard {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
+
+.dashboard h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 10px;
+  }
+
+  .dashboard h2 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EventCard from '../components/EventCard';
+import './styles/Dashboard.css'; // Import your CSS file for styling
 
 const Dashboard = () => {
   const [events, setEvents] = useState([]);

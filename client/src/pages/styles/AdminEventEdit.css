@@ -1,0 +1,255 @@
+/* AdminEventEdit.css */
+
+/* General Layout */
+.admin-event-edit {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.dark-theme .admin-event-edit {
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.dark-theme h2 {
+  color: #f1f1f1;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+}
+
+.dark-theme p {
+  color: #bbb;
+}
+
+/* Edit Max Budget Section */
+h3 {
+  font-size: 20px;
+  margin-top: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dark-theme h3 {
+  color: #f1f1f1;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+li input[type="number"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100px;
+}
+
+.dark-theme li input[type="number"] {
+  background-color: #444;
+  color: #f1f1f1;
+  border: 1px solid #666;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-left: 15px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.dark-theme button {
+  background-color: #0056b3;
+}
+
+.dark-theme button:hover {
+  background-color: #003d7a;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  color: #333;
+}
+
+.dark-theme th {
+  background-color: #444;
+  color: #f1f1f1;
+}
+
+td {
+  background-color: #fff;
+}
+
+.dark-theme td {
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+tr:hover td {
+  background-color: #f7f7f7;
+}
+
+.dark-theme tr:hover td {
+  background-color: #555;
+}
+
+/* User Expenses Table */
+td button {
+  padding: 5px 10px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+td button:hover {
+  background-color: #c0392b;
+}
+
+.dark-theme td button {
+  background-color: #c0392b;
+}
+
+.dark-theme td button:hover {
+  background-color: #e74c3c;
+}
+
+/* Total Expenses Section */
+ul.total-expenses {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.total-expenses li {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+ul.total-expenses li span {
+  font-weight: bold;
+}
+
+.dark-theme ul.total-expenses li {
+  color: #f1f1f1;
+}
+
+/* Net Total Spent Section */
+h3.net-total {
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.dark-theme h3.net-total {
+  color: #f1f1f1;
+}
+@media (max-width: 768px) {
+  .admin-event-edit {
+    padding: 10px;
+  }
+
+  .admin-event-edit h2 {
+    font-size: 1.3rem;
+  }
+
+  .admin-event-edit h3 {
+    font-size: 1.1rem;
+  }
+
+  .admin-event-edit table,
+  .admin-event-edit thead,
+  .admin-event-edit tbody,
+  .admin-event-edit th,
+  .admin-event-edit td,
+  .admin-event-edit tr {
+    display: block;
+  }
+
+  .admin-event-edit tr {
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+  }
+
+  .admin-event-edit td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+    font-size: 0.8rem;
+  }
+
+  .admin-event-edit td::before {
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  .admin-event-edit td:nth-of-type(1)::before { content: "User Name"; }
+  .admin-event-edit td:nth-of-type(2)::before { content: "Item"; }
+  .admin-event-edit td:nth-of-type(3)::before { content: "Amount"; }
+  .admin-event-edit td:nth-of-type(4)::before { content: "Expense (Criterion)"; }
+  .admin-event-edit td:nth-of-type(5)::before { content: "Date of Purchase"; }
+  .admin-event-edit td:nth-of-type(6)::before { content: "Action"; }
+
+  .admin-event-edit input[type="number"] {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .admin-event-edit button {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+}

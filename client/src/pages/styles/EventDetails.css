@@ -1,0 +1,118 @@
+.event-details {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
+
+.event-details h2,
+.event-details h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--heading-color);
+}
+
+.event-details p {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.event-details form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto 30px;
+}
+
+.event-details input,
+.event-details select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.event-details button {
+  padding: 10px;
+  border: none;
+  background-color: var(--button-bg);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.event-details button:hover {
+  background-color: var(--button-hover);
+}
+
+.event-details table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--table-bg);
+  color: var(--text-color);
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.event-details th,
+.event-details td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var(--table-border);
+}
+
+@media (max-width: 768px) {
+  .event-details {
+    padding: 15px;
+  }
+
+  .event-details h2 {
+    font-size: 1.6rem;
+  }
+
+  .event-details form {
+    width: 100%;
+  }
+
+  .event-details table,
+  .event-details thead,
+  .event-details tbody,
+  .event-details th,
+  .event-details td,
+  .event-details tr {
+    display: block;
+  }
+
+  .event-details thead {
+    display: none;
+  }
+
+  .event-details tr {
+    margin-bottom: 15px;
+    border: 1px solid var(--table-border);
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .event-details td {
+    text-align: left;
+    padding: 8px 10px;
+    position: relative;
+  }
+
+  .event-details td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--heading-color);
+  }
+}

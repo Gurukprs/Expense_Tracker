@@ -278,3 +278,26 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(24px);
 }
+body.light-theme {
+  --bg-color: #ffffff;
+  --text-color: #121212;
+  --heading-color: #1a1a1a;
+  --input-border: #ccc;
+  --input-bg: #fff;
+  --button-bg: #007bff;
+  --button-hover: #0056b3;
+  --table-bg: #f9f9f9;
+  --table-border: #ccc;
+}
+
+body.dark-theme {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --heading-color: #ffffff;
+  --input-border: #444;
+  --input-bg: #1e1e1e;
+  --button-bg: #1a73e8;
+  --button-hover: #185abc;
+  --table-bg: #1f1f1f;
+  --table-border: #333;
+}

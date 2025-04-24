@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AdminEventCard from '../components/AdminEventCard';
 import AdminNavbar from '../components/AdminNavbar';
-
+import './styles/AdminEventManagement.css'; // Import your CSS file for styling
 const AdminEventManagement = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);

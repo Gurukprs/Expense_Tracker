@@ -10,7 +10,7 @@ const AdminNavbar = () => {
   return (
     <nav className="admin-navbar">
       <h2>Admin Panel</h2>
-      <button onClick={() => navigate('/admin')}>Manage Events</button>
+      {/* <button onClick={() => navigate('/admin')}>Manage Events</button> */}
       <button onClick={() => navigate('/admin/create-event')}>Create Event</button>
       <button onClick={logout}>Logout</button>
     </nav>

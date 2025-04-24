@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './styles/AdminEventEdit.css'; // Ensure you have a CSS file for styling
 
 const AdminEventEdit = () => {
   const { id } = useParams();

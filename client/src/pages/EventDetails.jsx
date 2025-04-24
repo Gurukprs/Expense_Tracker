@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthContext'; 
+import './styles/EventDetails.css'; // ✅ Import CSS for styling
 
 const EventDetails = () => {
   const { id } = useParams();

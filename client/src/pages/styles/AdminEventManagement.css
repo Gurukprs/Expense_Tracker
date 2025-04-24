@@ -1,0 +1,30 @@
+.admin-events {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-color);
+}
+
+.admin-events h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .admin-events {
+    padding: 10px;
+  }
+
+  .admin-events h2 {
+    font-size: 1.5rem;
+  }
+}
