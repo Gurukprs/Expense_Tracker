@@ -62,8 +62,8 @@ router.post('/register', async (req, res) => {
     const mailOptions = {
       from: "gurukprs@gmail.com",  // Update your email here
       to: email,
-      subject: "Your OTP for Registration",
-      text: `Your OTP is ${otp}`,
+      subject: "Your OTP for Expense Tracker",
+      text: `Your OTP for registration is ${otp}`,
     };
 
     const transporter = nodemailer.createTransport({
