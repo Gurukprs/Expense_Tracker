@@ -26,7 +26,7 @@ const Login = () => {
           <span className="slider round"></span>
         </label>
       </div>
-
+      <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Expense Tracker</h1>
       <div className="auth-form">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -72,6 +72,10 @@ const Login = () => {
           </Link>
         </p>
       </div>
+      <footer style={{ textAlign: 'center', marginTop: '20px' }}>
+        <p>&copy; 2025 Expense Tracker. All rights reserved.</p>
+        <p>Developed by <a href="https://guruprasaaths.netlify.app" target="_blank" rel="noopener noreferrer">Guruprasaath</a></p>
+        </footer>
     </div>
   );
 };
