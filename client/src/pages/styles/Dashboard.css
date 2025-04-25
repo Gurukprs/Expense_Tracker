@@ -4,7 +4,7 @@
   margin: 0 auto;
   font-family: 'Segoe UI', sans-serif;
   color: var(--text-color);
-  /* background-color: var(--bg-color); */
+  background-color: var(--bg-color);
   min-height: 100vh;
 }
 
@@ -23,38 +23,9 @@
 @media (max-width: 768px) {
   .dashboard {
     padding: 10px;
-    color: #ffffff;
   }
 
   .dashboard h2 {
     font-size: 1.5rem;
   }
-}
-
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.dashboard-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logout-btn {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.logout-btn:hover {
-  background-color: #c0392b;
 }

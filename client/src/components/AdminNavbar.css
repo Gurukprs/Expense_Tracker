@@ -64,33 +64,3 @@
     padding: 12px;
   }
 }
-.admin-navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.admin-navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logout-btn {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.logout-btn:hover {
-  background-color: #c0392b;
-}
-
-.admin-welcome {
-  font-weight: 500;
-}
