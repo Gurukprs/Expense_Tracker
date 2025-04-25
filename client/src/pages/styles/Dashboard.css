@@ -4,7 +4,7 @@
   margin: 0 auto;
   font-family: 'Segoe UI', sans-serif;
   color: var(--text-color);
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
   min-height: 100vh;
 }
 
