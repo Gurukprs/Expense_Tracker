@@ -85,6 +85,23 @@ router.post('/register', async (req, res) => {
   }
 });
 
+//JWT Cookies
+router.get('/verify', (req, res) => {
+  const token = req.cookies.token;
+  if (!token) return res.status(401).json({ message: 'No token, unauthorized' });
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    res.json({ 
+      isAdmin: decoded.isAdmin,
+      userId: decoded.userId 
+    });
+  } catch (err) {
+    console.error('Token verification failed:', err);
+    res.status(401).json({ message: 'Invalid token' });
+  }
+});
+
 router.post('/verify-otp', async (req, res) => {
   try {
     const { name, email, password, otp } = req.body;
@@ -107,7 +124,7 @@ router.post('/verify-otp', async (req, res) => {
   }
 });
 
-
+//1st method for login
 // router.post('/login', async (req, res) => {
 //   try {
 //     const { email, password } = req.body;
@@ -131,6 +148,34 @@ router.post('/verify-otp', async (req, res) => {
 //   }
 // });
 
+
+//2nd method for login
+// router.post('/login', async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+
+//     // ✅ Enforce @kongu.edu email check
+//     if (!email.endsWith("@kongu.edu")) {
+//       return res.status(400).json({ message: "Only @kongu.edu emails are allowed." });
+//     }
+
+//     const user = await User.findOne({ email });
+//     if (!user) return res.status(400).json({ message: 'User not found' });
+
+//     const isMatch = await bcrypt.compare(password, user.password);
+//     if (!isMatch) return res.status(400).json({ message: 'Invalid password' });
+
+//     const isAdmin = user.email === ADMIN_EMAIL;
+//     const token = jwt.sign({ userId: user._id, isAdmin }, JWT_SECRET, { expiresIn: '1h' });
+
+//     res.json({ token, isAdmin, name: user.name, email: user.email });
+//   } catch (error) {
+//     console.error('Login Error:', error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// });
+
+//login with JWT Cookies
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -149,11 +194,30 @@ router.post('/login', async (req, res) => {
     const isAdmin = user.email === ADMIN_EMAIL;
     const token = jwt.sign({ userId: user._id, isAdmin }, JWT_SECRET, { expiresIn: '1h' });
 
-    res.json({ token, isAdmin, name: user.name, email: user.email });
+    // ✅ Set token in HttpOnly cookie
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // true if deployed with HTTPS
+      sameSite: 'Lax',
+      maxAge: 1000 * 60 * 60, // 1 hour
+    });
+
+    // ✅ Send additional user info (no token in body)
+    res.json({ isAdmin, name: user.name, email: user.email });
+    
   } catch (error) {
     console.error('Login Error:', error);
     res.status(500).json({ message: 'Server error' });
   }
+});
+
+router.post('/logout', (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    sameSite: 'Lax',
+    secure: process.env.NODE_ENV === 'production',
+  });
+  res.json({ message: 'Logged out successfully' });
 });
 
 

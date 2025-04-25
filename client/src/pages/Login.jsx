@@ -2,7 +2,8 @@ import React, { useState, useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 import { ThemeContext } from "../context/ThemeContext";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom'; // Make sure you're using React Router
+import { Link } from 'react-router-dom';
+import './styles/Login.css'; // Import your CSS file for styling
 
 const Login = () => {
   const { darkMode, toggleTheme } = useContext(ThemeContext);
@@ -11,10 +12,13 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     await login({ email, password });
+    setLoading(false);
   };
 
   return (
@@ -61,10 +65,15 @@ const Login = () => {
             </span>
           </div>
 
-          <button type="submit" style={{ marginLeft: '0px', marginTop: '0px' }}>Login</button>
+          <button type="submit" disabled={loading} style={{ marginLeft: '0px', marginTop: '0px', position: 'relative' }}>
+            {loading ? (
+              <div className="spinner" />
+            ) : (
+              'Login'
+            )}
+          </button>
         </form>
 
-        {/* 👇 Add this Register link below the form */}
         <p style={{ marginTop: '1rem', fontSize: '14px', textAlign:'center'}}>
           Click here to{' '}
           <Link to="/register" style={{ color: '#007bff', textDecoration: 'underline' }}>
@@ -75,7 +84,7 @@ const Login = () => {
       <footer style={{ textAlign: 'center', marginTop: '20px' }}>
         <p>&copy; 2025 Expense Tracker. All rights reserved.</p>
         <p>Developed by <a href="https://guruprasaaths.netlify.app" target="_blank" rel="noopener noreferrer">Guruprasaath</a></p>
-        </footer>
+      </footer>
     </div>
   );
 };
