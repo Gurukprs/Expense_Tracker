@@ -23,6 +23,7 @@
 @media (max-width: 768px) {
   .dashboard {
     padding: 10px;
+    color: #ffffff;
   }
 
   .dashboard h2 {
