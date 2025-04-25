@@ -92,7 +92,7 @@ _Frontend runs on **PORT 3000**_
 ## 📸 Screenshots
 | Login Page | Dashboard |
 |------------|----------|
-| ![Login](./screenshots/Login.png) | ![Dashboard](https://via.placeholder.com/300) |
+| ![Login](./screenshots/Login.png) | ![Dashboard](./screenshots/dashboard.png) |
 
 ---
 
