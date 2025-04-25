@@ -42,7 +42,7 @@ const Register = () => {
       const data = await response.json();
       if (!response.ok) throw new Error(data.message);
   
-      alert("OTP sent to your email.");
+      alert("OTP sent to your email. Kindly check your spam box if it is missing in the inbox.");
       setOtpSent(true);
     } catch (error) {
       alert(error.message);
