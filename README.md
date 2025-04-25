@@ -35,7 +35,7 @@ An advanced **Expense Tracker** for the **CSE Association** to manage event expe
 ## ⚡ Setup Guide
 ### **1️⃣ Clone the Repository**
 ```sh
- git clone https://github.com/your-username/expense-tracker.git
+ git clone https://github.com/Gurukprs/expense-tracker.git
  cd expense-tracker
 ```
 
@@ -92,7 +92,7 @@ _Frontend runs on **PORT 3000**_
 ## 📸 Screenshots
 | Login Page | Dashboard |
 |------------|----------|
-| ![Login](https://via.placeholder.com/300) | ![Dashboard](https://via.placeholder.com/300) |
+| ![Login](./screenshots/Login.png) | ![Dashboard](https://via.placeholder.com/300) |
 
 ---
 
