@@ -13,7 +13,7 @@ const AdminEventEdit = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/event/${id}`);
+        const response = await fetch(`https://expense-tracker-3eaf.onrender.com/event/${id}`);
         if (!response.ok) throw new Error("Failed to fetch event details.");
 
         const data = await response.json();
@@ -38,7 +38,7 @@ const AdminEventEdit = () => {
 
   const handleSaveChanges = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/event/${id}/update`, {
+      const response = await fetch(`https://expense-tracker-3eaf.onrender.com/event/${id}/update`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ criteria: updatedCriteria }),
@@ -56,7 +56,7 @@ const AdminEventEdit = () => {
 
   const handleDeleteExpense = async (expenseId) => {
     try {
-      const response = await fetch(`http://localhost:5000/event/${id}/expense/${expenseId}`, {
+      const response = await fetch(`https://expense-tracker-3eaf.onrender.com/event/${id}/expense/${expenseId}`, {
         method: 'DELETE',
       });
   
@@ -66,7 +66,7 @@ const AdminEventEdit = () => {
       }
   
       // Refresh event data after deleting expense
-      const updatedEvent = await fetch(`http://localhost:5000/event/${id}`);
+      const updatedEvent = await fetch(`https://expense-tracker-3eaf.onrender.com/event/${id}`);
       const data = await updatedEvent.json();
       setEvent(data);
   
@@ -78,7 +78,7 @@ const AdminEventEdit = () => {
   
   const handleDeleteEvent = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/event/${id}`, { method: 'DELETE' });
+      const response = await fetch(`https://expense-tracker-3eaf.onrender.com/event/${id}`, { method: 'DELETE' });
       if (!response.ok) throw new Error("Failed to delete event.");
 
       alert("Event deleted successfully!");

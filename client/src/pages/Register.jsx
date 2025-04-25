@@ -9,7 +9,7 @@ const Register = () => {
 
   const sendOtp = async () => {
     try {
-      const response = await fetch("http://localhost:5000/auth/register", {
+      const response = await fetch("https://expense-tracker-3eaf.onrender.com/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -27,7 +27,7 @@ const Register = () => {
 
   const verifyOtp = async () => {
     try {
-      const response = await fetch("http://localhost:5000/auth/verify-otp", {
+      const response = await fetch("https://expense-tracker-3eaf.onrender.com/auth/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, otp }),

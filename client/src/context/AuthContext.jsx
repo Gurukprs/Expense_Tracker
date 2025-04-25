@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   // };
   const login = async ({ email, password }) => {
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', { email, password });
+      const response = await axios.post('https://expense-tracker-3eaf.onrender.com/auth/login', { email, password });
   
       const userData = {
         name: response.data.name, // ✅ Ensure name is received
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
   // Register function
   const register = async (userInfo) => {
     try {
-      const response = await fetch('http://localhost:5000/auth/register', {
+      const response = await fetch('https://expense-tracker-3eaf.onrender.com/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),

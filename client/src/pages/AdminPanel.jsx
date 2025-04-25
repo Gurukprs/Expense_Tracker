@@ -57,7 +57,7 @@ const AdminPanel = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/event/create', {
+      const response = await fetch('https://expense-tracker-3eaf.onrender.com/event/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: eventName, date, criteria: selectedCriteria }),

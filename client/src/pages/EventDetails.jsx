@@ -15,7 +15,7 @@ const EventDetails = () => {
     console.log("🛠️ Current User from AuthContext:", user); // ✅ Debugging User Data
     const fetchEvent = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/event/${id}`);
+        const response = await fetch(`https://expense-tracker-3eaf.onrender.com/event/${id}`);
         if (!response.ok) throw new Error("Failed to fetch event details.");
         
         const data = await response.json();
@@ -89,7 +89,7 @@ const EventDetails = () => {
     console.log("🚀 Submitting expense for user:", user.name); // ✅ Debugging
   
     try {
-      const response = await fetch(`http://localhost:5000/event/${id}/expense`, {
+      const response = await fetch(`https://expense-tracker-3eaf.onrender.com/event/${id}/expense`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -106,7 +106,7 @@ const EventDetails = () => {
         throw new Error(errorData.message || "Failed to add expense");
       }
   
-      const updatedEvent = await fetch(`http://localhost:5000/event/${id}`);
+      const updatedEvent = await fetch(`https://expense-tracker-3eaf.onrender.com/event/${id}`);
       const data = await updatedEvent.json();
       setEvent(data);
       setNewExpense({ item: '', amount: '', criteria: '' });

@@ -10,7 +10,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/event/all');
+        const response = await axios.get('https://expense-tracker-3eaf.onrender.com/event/all');
         console.log("Fetched Events:", response.data);  // Debugging line
         setEvents(response.data);
       } catch (error) {
