@@ -14,6 +14,11 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log("✅ MongoDB Connected Successfully"))
   .catch(err => console.log("❌ MongoDB Connection Failed:", err));
 
+//Ping respose for corn job
+app.get('/ping', (req, res) => {
+  res.status(200).send('OK');
+});
+
 app.use('/auth', require('./routes/auth'));
 app.use('/event', require('./routes/event'));
 
