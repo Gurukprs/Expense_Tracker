@@ -8,63 +8,67 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  // ✅ Check if user is already logged in by verifying cookie
+  // Check if user is already logged in (from localStorage)
   useEffect(() => {
-    const verifyUser = async () => {
-      try {
-        const response = await axios.get('https://expense-tracker-3eaf.onrender.com/auth/verify', {
-          withCredentials: true,
-        });
-
-        const { isAdmin, userId } = response.data;
-
-        // Fetch additional user info if needed
-        // Or just store basic info
-        setUser({ isAdmin, userId });
-        console.log("✅ Session verified:", { isAdmin, userId });
-      } catch (error) {
-        console.warn("❌ Session not valid:", error.response?.data?.message || error.message);
-        setUser(null);
-      }
-    };
-
-    verifyUser();
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
   }, []);
 
-  // ✅ Login sets cookie
+  // Login function
+  // const login = async ({ email, password }) => {
+  //   try {
+  //     const response = await axios.post('http://localhost:5000/auth/login', { email, password });
+  
+  //     const userData = {
+  //       name: response.data.name, // ✅ Ensure name is received from backend
+  //       email: response.data.email,
+  //       isAdmin: response.data.isAdmin,
+  //       token: response.data.token,
+  //     };
+  
+  //     setUser(userData);
+  //     localStorage.setItem('user', JSON.stringify(userData));
+  
+  //     console.log("✅ User logged in:", userData); // ✅ Debugging
+  //     navigate(response.data.isAdmin ? '/admin' : '/dashboard');
+  //   } catch (error) {
+  //     console.error('Login failed:', error.response?.data?.message || error.message);
+  //     alert('Invalid credentials, please try again.');
+  //   }
+  // };
   const login = async ({ email, password }) => {
     try {
-      const response = await axios.post(
-        'https://expense-tracker-3eaf.onrender.com/auth/login',
-        { email, password },
-        { withCredentials: true }
-      );
-
-      const { name, email: userEmail, isAdmin } = response.data;
-      const userData = { name, email: userEmail, isAdmin };
+      const response = await axios.post('https://expense-tracker-3eaf.onrender.com/auth/login', { email, password });
+  
+      const userData = {
+        name: response.data.name, // ✅ Ensure name is received
+        email: response.data.email,
+        isAdmin: response.data.isAdmin,
+        token: response.data.token,
+      };
+  
       setUser(userData);
-
-      navigate(isAdmin ? '/admin' : '/dashboard');
+      localStorage.setItem('user', JSON.stringify(userData));
+  
+      console.log("✅ User logged in:", userData); // Debugging
+      navigate(response.data.isAdmin ? '/admin' : '/dashboard');
     } catch (error) {
       console.error('Login failed:', error.response?.data?.message || error.message);
       alert('Invalid credentials, please try again.');
     }
   };
+  
 
-  // ✅ Logout removes cookie
-  const logout = async () => {
-    try {
-      await axios.post('https://expense-tracker-3eaf.onrender.com/auth/logout', {}, {
-        withCredentials: true,
-      });
-    } catch (err) {
-      console.error('Logout error (possibly already logged out):', err.message);
-    }
+  // Logout function
+  const logout = () => {
     setUser(null);
+    localStorage.removeItem('user');
     navigate('/');
   };
 
-  // Register stays same
+  // Register function
   const register = async (userInfo) => {
     try {
       const response = await fetch('https://expense-tracker-3eaf.onrender.com/auth/register', {
@@ -72,13 +76,13 @@ export const AuthProvider = ({ children }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),
       });
-
+  
       if (!response.ok) {
-        const errorText = await response.text();
+        const errorText = await response.text(); // Get response as text
         throw new Error(errorText || 'Registration failed');
       }
-
-      await response.json();
+  
+      const data = await response.json(); // Ensure response is JSON
       alert('Registration successful! You can now log in.');
       navigate('/');
     } catch (error) {
@@ -86,7 +90,7 @@ export const AuthProvider = ({ children }) => {
       alert(error.message);
     }
   };
-
+  
   return (
     <AuthContext.Provider value={{ user, login, logout, register }}>
       {children}
