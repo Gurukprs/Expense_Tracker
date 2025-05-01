@@ -82,7 +82,7 @@ const Login = () => {
         </p>
       </div>
       <footer style={{ textAlign: 'center', marginTop: '20px' }}>
-        <p>&copy; 2025 Guruprasaath S</p>
+        <p>&copy; 2025 Expense Tracker</p>
         <p>Developed by <a href="https://guruprasaaths.netlify.app" target="_blank" rel="noopener noreferrer">Guruprasaath</a></p>
       </footer>
     </div>
